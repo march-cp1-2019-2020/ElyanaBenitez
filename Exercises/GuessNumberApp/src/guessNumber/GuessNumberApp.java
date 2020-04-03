@@ -62,6 +62,7 @@ public class GuessNumberApp {
         			System.out.println("too high");
         		}
         	}
+	    		//guess == randomNum
         	if (guess.equals(randomNum)) {
         		System.out.println("You WON!!!");
         	}
