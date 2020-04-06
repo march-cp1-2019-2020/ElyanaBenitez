@@ -4,9 +4,10 @@
  * 03/25/2020
  * 
  */
-// When I got to the point of adding the while loop, it didn't work. I don't know why.
+
 package guessNumber;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GuessNumberApp {
@@ -15,66 +16,73 @@ public class GuessNumberApp {
 		final int LIMIT = 10;
 		
         System.out.println("Guess the number!");
+        System.out.println("To exit the game at any time, just type 'Quit'");
         System.out.println("I'm thinking of a number from 1 to " + LIMIT);
         System.out.println();
-         
-        Scanner sc = new Scanner(System.in);
-    String choice = "y";
-    while (choice.equalsIgnoreCase("y")) {
-    	
+         	
         // get a random number between 1 and the limit
         double d = Math.random() * LIMIT; // d is >= 0.0 and < limit
         int randomNum = (int) d;             // convert double to int
         randomNum++;                         // int is >= 1 and <= limit
         
         
-        String choice1 = "y";
-        
-        	// prepare to read input from the user
-        	//Scanner sc = new Scanner(System.in);
-        	
-        	int guess = sc.nextInt();
-        	System.out.println("You guessed: " + guess);
-        	
+            Scanner sc = new Scanner(System.in);
+            int count = 1;
+       		
+           
+        	while (true) {
         		
-        		// Scanner sc1 = new Scanner(System.in);
-        	while (!(guess = randomNum)) {
-    		
-        		guess = sc.nextInt();
-        		System.out.println("You guessed: " + guess);
-        		
-        		//TODO: compare the guess to the random number
-        		
-        		//  ??? NOT SURE WHAT TO DO HERE ???
-        		
-        		//TODO: what should happen if the user enters a number outside the range?
-        	
-        		if ((guess > LIMIT) || (guess < 1)) {
-        			System.out.println("Not valid");
-        			System.out.println("Please pick a number within the range 1 - 10");
-        		}
-        	
-        		//TODO: print out a message to the user saying "Too high" or "Too low"
-        	
-        		if ((guess < randomNum) && (guess >= 1)) {
-        			System.out.println("too low");
-        		} else if ((guess > randomNum) && (guess <= 10) ) {
-        			System.out.println("too high");
-        		}
-        	}
-	    		//guess == randomNum
-        	if (guess.equals(randomNum)) {
-        		System.out.println("You WON!!!");
-        	}
-        		System.out.print("Continue? (y/n): ");
-        		choice = sc.nextLine();
-        		System.out.println();
-        		}
-       
-        	}
-			sc.close();
-			System.out.println("Bye!");
-		}
+        				
+	       		try { 
+	       			
+	        		System.out.print("Guess a Number: ");	
+	        		
+//	        		I don't know how to make this an IgnoreCase Method...
+		    		if (sc.hasNext("quit")) {
+		    			System.out.println("Thanks for playing");
+		      			break;
+		        	}	
+		       		
+		       	    int guess = sc.nextInt();
+		       		
+		       		
+		       		if ((guess > LIMIT) || (guess < 1)) {
+		        		System.out.println("Not valid");
+		       			System.out.println("Please pick a number within the range 1 - 10 \n");
+		       			continue;
+		       		}
+		        	
+		        		//TODO: print out a message to the user saying "Too high" or "Too low"
+		        	
+		       		if (guess < randomNum)  {
+		       			System.out.println("\n You guessed " + guess);
+		       			System.out.println("too low \n");
+		       		} else if (guess > randomNum) {
+	        			System.out.println("\n You guessed " + guess);
+	        			System.out.println("too high \n");		        	
+	        		} else {
+		        	System.out.print("\n");
+		       		System.out.println("You WON!!!");
+		       		System.out.println("You guessed the number in " +
+		  				count + " tries. \n");
+		       	   break;
+		       		} 	
+	        		count++;
+	        		
+	        	} catch(InputMismatchException ime) {
+	        		System.out.print("\n");
+	       			System.out.println("You must enter a numerical digit.");
+	       			System.out.println("Please try again. \n");
+	       			sc = new Scanner(System.in);
+	       		} catch(Exception e) {
+	       			System.out.print("\n");
+	        		System.out.println("Apologies, but an error has occured");
+	        		System.out.println("Please try again. \n");
+	       		}
+	      		
+        }
+       	sc.close();
+		System.out.println("Bye!");	
 	}
 }
 
