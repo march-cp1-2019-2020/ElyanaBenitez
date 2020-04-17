@@ -55,6 +55,8 @@ public class Console {
                System.out.println("Error! Invalid decimal. Try again.");
             	
 //               I have no idea what i'm supposed to do.
+                   // TEACHER NOTES: you are on the right track.  You need to look through the whole String to see if 
+                   // the $ or % exists and then remove them.
             /**	
                if (s.startsWith("$")) {
             	   s = s.substring(1);
