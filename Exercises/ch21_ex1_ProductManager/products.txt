@@ -1,0 +1,6 @@
+jsp	Murach's Java Servlets and JSP	57.5
+mysql	Murach's MySQL	54.5
+android	Murach's Andriod Programming	57.5
+html5	Murach's HTML5 and CSS3	54.5
+oracle	Murach's Oracle and PL/SQL	54.5
+javascript	Murach's JavaScript and jQuery	57.5
