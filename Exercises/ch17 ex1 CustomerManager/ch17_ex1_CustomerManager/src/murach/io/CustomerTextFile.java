@@ -11,6 +11,7 @@ import murach.business.Customer;
 
 public class CustomerTextFile {
     private static final String FIELD_SEP = "\t";
+    //TEACHER NOTES: need to initialize these 3 variables so that they are not null
     private static final Path customersPath = null;      // add code here
     private static final File customersFile = null;      // add code here
     private static ArrayList<Customer> customers = null; // add code here
